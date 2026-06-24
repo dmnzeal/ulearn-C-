@@ -81,3 +81,4 @@ classDiagram
     style ShooterMover fill:#3B82F6,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
     style Robot fill:#1E3A8A,stroke:#0F2B6B,color:#FFFFFF,stroke-width:2px
     style RobotFactory fill:#1E3A8A,stroke:#0F2B6B,color:#FFFFFF,stroke-width:2px
+```
