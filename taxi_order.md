@@ -136,3 +136,4 @@ classDiagram
     style ITaxiApi fill:#60A5FA,stroke:#2563EB,color:#1E3A8A,stroke-width:2px
     style TaxiApi fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF,stroke-width:2px
     style DriversRepository fill:#3B82F6,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+```
