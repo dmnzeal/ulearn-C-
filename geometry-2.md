@@ -1,6 +1,6 @@
 ## 1. Описание предметной области и сущностей
 
-В системе трёхмерные тела (шар, параллелепипед, цилиндр, составное) обрабатываются через паттерн Visitor: каждый посетитель реализует обобщённый интерфейс, а тела принимают его через метод Accept. Конкретные посетители вычисляют ограничивающий параллелепипед или заменяют тела на него, рекурсивно обрабатывая составные объекты. Паттерн гарантирует обработку всех типов на этапе компиляции и позволяет легко добавлять новые операции без изменения существующих классов.
+В системе реализован классический паттерн Visitor для работы с трёхмерными геометрическими телами (шар, параллелепипед, цилиндр, составное тело). Каждое тело определяет метод Accept, принимающий посетителя (IVisitor) и передающий управление соответствующему методу Visit. Посетители не хранят ссылок на тела, а только обрабатывают их как параметры. Конкретные посетители: BoundingBoxVisitor вычисляет минимальный ограничивающий параллелепипед, сохраняя результат в своём поле; BoxifyVisitor заменяет все простые тела на их параллелепипеды, рекурсивно обрабатывая составные объекты. Такой подход гарантирует обработку всех типов на этапе компиляции, исключает условные операторы и позволяет легко добавлять новые операции без изменения классов тел.
 
 ## 2. Диаграмма классов
 
@@ -9,52 +9,56 @@ classDiagram
     class Body {
         <<abstract>>
         +Vector3 Position
-        +Accept(IVisitor) T*
+        +Accept(IVisitor visitor)*
     }
 
     class Ball {
         +double Radius
-        +Accept(IVisitor) T
+        +Accept(IVisitor visitor)
     }
 
     class RectangularCuboid {
         +double SizeX
         +double SizeY
         +double SizeZ
-        +Accept(IVisitor) T
+        +Accept(IVisitor visitor)
     }
 
     class Cylinder {
         +double SizeZ
         +double Radius
-        +Accept(IVisitor) T
+        +Accept(IVisitor visitor)
     }
 
     class CompoundBody {
         +IReadOnlyList~Body~ Parts
-        +Accept(IVisitor) T
+        +Accept(IVisitor visitor)
     }
 
     class IVisitor {
-        <<interface>> (generic T)
-        +Visit(Ball) T
-        +Visit(RectangularCuboid) T
-        +Visit(Cylinder) T
-        +Visit(CompoundBody) T
+        <<interface>>
+        +Visit(Ball ball)
+        +Visit(RectangularCuboid cuboid)
+        +Visit(Cylinder cylinder)
+        +Visit(CompoundBody compound)
     }
 
     class BoundingBoxVisitor {
-        +Visit(Ball) RectangularCuboid
-        +Visit(RectangularCuboid) RectangularCuboid
-        +Visit(Cylinder) RectangularCuboid
-        +Visit(CompoundBody) RectangularCuboid
+        -RectangularCuboid _result
+        +GetResult() RectangularCuboid
+        +Visit(Ball ball)
+        +Visit(RectangularCuboid cuboid)
+        +Visit(Cylinder cylinder)
+        +Visit(CompoundBody compound)
     }
 
     class BoxifyVisitor {
-        +Visit(Ball) Body
-        +Visit(RectangularCuboid) Body
-        +Visit(Cylinder) Body
-        +Visit(CompoundBody) Body
+        -Body _result
+        +GetResult() Body
+        +Visit(Ball ball)
+        +Visit(RectangularCuboid cuboid)
+        +Visit(Cylinder cylinder)
+        +Visit(CompoundBody compound)
     }
 
     Body <|-- Ball
