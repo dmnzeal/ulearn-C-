@@ -104,3 +104,4 @@ classDiagram
     style Creeps fill:#3B82F6,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
     style ResourcePile fill:#3B82F6,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
     style Interaction fill:#1E3A8A,stroke:#0F2B6B,color:#FFFFFF,stroke-width:2px
+```
