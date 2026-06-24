@@ -79,3 +79,4 @@ classDiagram
     style IVisitor fill:#60A5FA,stroke:#2563EB,color:#1E3A8A,stroke-width:2px
     style BoundingBoxVisitor fill:#3B82F6,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
     style BoxifyVisitor fill:#3B82F6,stroke:#2563EB,color:#FFFFFF,stroke-width:2px
+```
