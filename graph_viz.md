@@ -74,3 +74,4 @@ classDiagram
     style NodeAttributes fill:#93C5FD,stroke:#3B82F6,color:#1E3A8A,stroke-width:2px
     style EdgeAttributes fill:#93C5FD,stroke:#3B82F6,color:#1E3A8A,stroke-width:2px
     style NodeShape fill:#DBEAFE,stroke:#60A5FA,color:#1E3A8A,stroke-width:2px
+```
